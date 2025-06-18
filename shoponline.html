@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        body {
+            background-color: rgb(220, 245, 245);
+        }
+
+        h1 {
+            color: rgb(34, 62, 79);
+        }
+
+        .list {
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            color: black;
+        }
+
+        .list_item {
+            display: flex;
+            flex-direction: row;
+            justify-content: left;
+            border: 2px solid rgb(0, 0, 0);
+        }
+
+        img {
+            padding-top: 20px;
+            max-width: 300px;
+            max-height: 100px;
+        }
+
+        .price {
+            display: flex;
+            color: rgb(61, 176, 247);
+        }
+
+        h4 {
+            width: 300px;
+            font-size: 1.5em;
+            font-weight: bold;
+            padding-left: 40px;
+            padding-right: 10px;
+        }
+
+        p {
+            color: darkgrey;
+            padding-left: 40px;
+            padding-right: 10px;
+        }
+
+        #button {
+            margin-top: 20px;
+            font-size: 1em;
+            font-weight: bold;
+            color: black;
+            background-color: lightskyblue;
+            border-radius: 15%;
+            border-color: rgba(10, 27, 86, 0.753);
+        }
+
+        #finalPrice {
+            margin-top: 10px;
+            font-size: 1.5em;
+        }
+
+        .discountPrice {
+            margin-top: 10px;
+            color: rgb(45, 176, 45);
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Корзина десертов</h1>
+    <section class="list">
+        <article class="list_item">
+            <div>
+                <h4>Strawberry icecream</h4>
+                <p>Легкое клубничное мороженое</p>
+                <p class="price" id="one">300</p>
+            </div>
+            <img src="/1.jpeg" alt="Strawberry icecream">
+        </article>
+        <article class="list_item">
+            <div>
+                <h4>Chocolate cake</h4>
+                <p>Большой шоколадный торт</p>
+                <p class="price" id="two">1500</p>
+            </div>
+            <img src="/2.jpeg" alt="Chocolate cake">
+
+        </article>
+        <article class="list_item">
+            <div>
+                <h4>Bombon</h4>
+                <p>Шоколадная конфета с ванильной начинкой</p>
+                <p class="price" id="three">60</p>
+            </div>
+            <img src="/3.webp" alt="Bombon">
+        </article>
+        <article class="list_item">
+            <div>
+                <h4>Milkshake</h4>
+                <p>Молочный коктейль с Oreo</p>
+                <p class="price" id="four">450</p>
+            </div>
+            <img src="/4.jpeg" alt="Milkshake">
+        </article>
+    </section>
+    <section>
+        <button id="button">Использовать купон на 20%</button>
+        <div id='finalPrice'>И </div>
+    </section>
+
+    <script>
+        const productOne = document.querySelector('#one');
+        const productTwo = document.querySelector('#two');
+        const productThree = document.querySelector('#three');
+        const productFour = document.querySelector('#four');
+        const button = document.querySelector('#button');
+        const finalPrice = document.querySelector('#finalPrice');
+        let priceOne = productOne.textContent;
+        priceOne = +priceOne;
+        let priceTwo = productTwo.textContent;
+        priceTwo = +priceTwo;
+        let priceThree = productThree.textContent;
+        priceThree = +priceThree;
+        let priceFour = productFour.textContent;
+        priceFour = +priceFour;
+        let sum = priceOne + priceTwo + priceThree + priceFour;
+        finalPrice.textContent = sum;
+        button.addEventListener('click', function () {
+            let discountPrice = sum * 0.8;
+            finalPrice.textContent = discountPrice;
+            finalPrice.classList.add('discountPrice');
+        });
+    </script>
+</body>
+
+</html>
